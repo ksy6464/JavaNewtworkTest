@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<script>
+  // setTimeout(fn,ms)
+  // 지정된 ma가 지나고 함수 호출
+  // 한번만 실행됨
+  // setTimeout(function(){console.log("셋타임아웃")},2000);
+  // setTimeout(f_fnc,2000);
+  setTimeout(f_fnc,2000,'타이머', '함수');
+
+  // setInterval(fn, ms)
+  setInterval(function(){console.log("셋인터벌")}, 1000);
+
+  // function f_fnc(){
+  //   alert("함수");
+  // }
+  function f_fnc(param1, param2){
+    alert("함수" + param1 +param2);
+  }
+
+
+
+
+
+
+
+</script>

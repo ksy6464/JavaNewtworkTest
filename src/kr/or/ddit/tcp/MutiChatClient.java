@@ -13,7 +13,7 @@ public class MutiChatClient {
 
 	public void clientStart() throws IOException {
 		
-		Socket socket = new Socket("192.168.36.107", 7777);
+		Socket socket = new Socket("192.168.36.131", 7777);
 		
 		System.out.println("멀티 챗 서버에 접속되었습니다.");
 		

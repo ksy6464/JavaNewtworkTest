@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<!--   <style>
+    div {
+      border: solid red 2px;
+    }
+  </style> --> <!-- 그냥 혼자 해봄 -->
+</head>
+<body>
+  <div>랜덤색 표현하기</div>
+  <br> <!-- 그냥 내가 한줄 띄고 싶어서 넣음 -->
+  <input type="button" id="ranColor" value="랜덤색">
+  <input type="button" value="setTimeout"> <!-- 가상공강 -->
+  <input type="button" value="setInterval"> <!-- value속성으로 선택자 잡아주기 -->
+  <input type="button" value="중지">
+
+<script src="../js/random.js"></script>
+<script>
+  ///타이머 함수 실행하기 위해 함수 호출해야 돼서 함수 이름을 지정해주겠다
+  let ranColor;
+  let timer; //타이머함수 객체르 담을 변수 선언
+
+  /// 아래 코드는 함수 이름 지정하기 전이다
+  // document.querySelector('#ranColor').addEventListener('click', function(){
+  document.querySelector('#ranColor').addEventListener('click', ranColor = function(){
+
+    let v_disp = document.querySelector('div'); /// 출력할 영역
+    ///256색깔을 만들어내기 위해서 0부터 255의 색범위를 만들어야 한다
+    // 10진수 랜덤 색 생성 rgb(0~255, 0~255, 0~255)
+    // console.log(f_random(0,255)); ///값 확인용
+
+    // let random10 = [],  random16 = []; //색 정보 저장영역 
+    /// 선생님이 이렇게 한줄로 쓰셨는데 나는 보기편하라고 두줄로씀
+    let random10 = []; //10진수 색 정보 저장영역
+    let random16 = []; //16진수 색 정보 저장영역
+
+    for (let i = 0; i < 3; i++) { ///rgb에 3번 들어가니깐 for문 이용함
+      random10[i] = f_random(0,255)
+      random16[i] = f_random(0,255).toString(16)
+    }
+    // console.log(random10); ///3개 잘 들어갔는지 확인
+    // console.log(random10, "|", random16);
+    console.log(random10, "|", random16, "|", random16.join(""));
+
+    //영역에 색상 표현하기
+    v_disp.style.backgroundColor = "rgb( "+ random10+" )"; ///배경색
+    v_disp.style.color = "#"+random16; // 정보에 콤마가 같이 삽임되면 색상표현이 안됨
+    v_disp.style.color = "#"+random16.join(""); // 배열을 구분자 없이 문자열로 함침 ///글자색
+
+    // setTimeout(ranColor,1000) ; //재귀호출
+    ///이것을 추가하므로 setTimeout으로도 setInterval효과를 줄 수가 있다
+    timer =  setTimeout(ranColor,1000) ; //재귀호출, 중지버튼 만들면서 수정
+    
+  });
+
+  // 타이머 함수 활용 예정
+
+  // setTimeout은 함수 실행시간과는 별개로 고정적인 딜레이를 보장한다
+  document.querySelector('input:nth-of-type(2)').addEventListener('click', function(){
+    setTimeout(ranColor, 1500);
+
+    // 한번 실행 후 다시 실행하지 못하게 버튼 비활성화 처리
+    // document.querySelector('input:nth-of-type(2)').disabled = true;
+    document.querySelector('input:nth-of-type(2)').setAttribute('disabled', 'true');
+    // document.querySelector('input:nth-of-type(2)').setAttribute('disabled', true);
+    ///true 작은따옴표 써도 되고 안써도 된다
+ 
+
+  });
+
+  ///속성 선택할때는 대괄호[] 이용
+  // setInterval은 지정된 ms(delay)에 함수의 실행시간이 포함되므로
+  // 함수 실행시간이 길어질 경우 실행간 딜레이 없이 다음 함수가 바로 실행되는 문제 발생 확률이 높음
+  document.querySelector('[value="setInterval"]').addEventListener('click', function(){
+    setInterval(ranColor,1500);
+  });
+
+  document.querySelector('input:last-of-type').addEventListener('click', function(){
+    // alert(); 확인용
+    // clearTimeout( 실행중인타임아웃객체 )
+    clearTimeout(timer);
+
+    // 비활성화 처리되었던 버튼을 다시 복구시키기
+    // document.querySelector('input:nth-of-type(2)').disabled = false;
+    // document.querySelector('input:nth-of-type(2)').setAttribute('disabled', false); //처리 안됨
+    document.querySelector('input:nth-of-type(2)').setAttribute('enabled', true); // 처리안됨
+    ///setAttribute로는 처리가 안됨
+    // document.querySelector('input:nth-of-type(2)').removeAttribute('disabled');
+    //setAttribute로 설정된 값은 제거해야 됨
+
+
+  });
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

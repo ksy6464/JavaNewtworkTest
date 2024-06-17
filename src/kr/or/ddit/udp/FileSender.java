@@ -21,7 +21,7 @@ public class FileSender {
 			this.port = port; 
 			receiveAddr = InetAddress.getByName(receiveIp); 
 			///String을 원하는게 아니라 String을 기반으로 한 InetAddress를 원해서 그걸 바꿔줬다
-			file = new File("d:/D_Other/aaa.jpg");
+			file = new File("d:/D_Other/쵸파.jpg");
 			
 			if (!file.exists()) {
 				System.out.println("파일이 존재하지 않습니다.");
@@ -45,7 +45,7 @@ public class FileSender {
 			
 			sendData(file.getName().getBytes()); //파일명 전송
 			
-			sendData(String.valueOf(fileSize).getBytes()); //총 파일 크리 전송(bytes)
+			sendData(String.valueOf(fileSize).getBytes()); //총 파일 크기 전송(bytes)
 			
 			FileInputStream fis = new FileInputStream(file);
 			
@@ -105,6 +105,11 @@ public class FileSender {
 	public void sendData(byte[] data) throws IOException {
 		sendData(data, data.length);
 	}///자기 자신의 전체 데이터를 보낼때 사용
+	
+	public static void main(String[] args) {
+//		new FileSender("192.168.36.131", 8888).start();
+		new FileSender("192.168.36.110", 8888).start();
+	}
 	
 	
 

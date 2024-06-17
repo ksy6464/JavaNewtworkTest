@@ -23,7 +23,7 @@ public class Receiver extends Thread {
 		while (dis!=null) {
 		
 			try {
-				System.err.println(dis.readUTF());
+				System.out.println(dis.readUTF());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

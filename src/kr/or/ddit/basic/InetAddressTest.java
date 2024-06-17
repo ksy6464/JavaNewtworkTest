@@ -15,7 +15,7 @@ public class InetAddressTest {
 		// 네이버 사이트의 IP정보 가져오기
 		InetAddress naverIp = InetAddress.getByName("www.naver.com");///유효성 체크해주고 있다
 //		InetAddress naverIp = InetAddress.getByName("www.naverqqq.com");///UnknownHostException 이런호스트느 없다는뜻
-//		InetAddress naverIp = InetAddress.getByName("192.168.36.111");///유효성 체크해주고 있다
+//		InetAddress naverIp = InetAddress.getByName("192.168.36.111");///유효성 체크해주고 있다 ,  PC-07
 		System.out.println("Host Name => "+ naverIp.getHostName());
 		System.out.println("Host Address => "+ naverIp.getHostAddress());
 		System.out.println();

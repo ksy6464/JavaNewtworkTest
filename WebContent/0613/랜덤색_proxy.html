@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div>랜덤색 표현하기</div>    
+  <input type="button" id="ranColor" value="랜덤색">
+  <input type="button" value="중지">
+
+<script src="../js/random.js"></script>
+<script>
+  let timer;
+
+  // proxy pattern 대리 처리하여 로직의 흐름을 제어하는 행동 패턴
+  let flag = false;
+  function f_proxy(){
+    if(!flag){
+      // 버튼이벤트 대신 호출
+      ///지금 함수는 랜덤색 버튼이 눌렸을때 호출이되는데 그거 대신에 여기서 호출해주겠다
+      f_fnc();
+      flag = true; ///두번째 버튼 누를땐 if안의 !flag=false가 돼서 f_fnc 호출 안해서 발광안한다
+    }
+  }
+
+  // document.querySelector('#ranColor').addEventListener('click',f_fnc); ///대신호출하니깐 아래코드로 바꿈
+  document.querySelector('#ranColor').addEventListener('click',f_proxy); // 대리함수 호출
+  function f_fnc(){
+    let v_disp = document.querySelector('div');
+    let random10 = [];
+
+    for(let i=0; i<3; i++){
+      random10[i] = f_random(0,255);
+    }
+    v_disp.style.backgroundColor = "rgb(" + random10 + ")";
+  
+    timer = setTimeout(f_fnc,1500);
+  }
+ 
+  document.querySelector('input:last-of-type').addEventListener('click',function(){
+    clearTimeout(timer);
+    flag = false;
+  });
+
+</script>
+</body>
+</html>

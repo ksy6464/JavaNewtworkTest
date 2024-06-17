@@ -7,7 +7,7 @@ import java.net.UnknownHostException;
 public class TcpChatClient {
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		
-		Socket socket = new Socket("192.168.36.107", 7777);
+		Socket socket = new Socket("192.168.36.110", 7777); ///동형 Ip
 		
 		System.out.println("채팅 서버에 연결되었습니다...");
 		
