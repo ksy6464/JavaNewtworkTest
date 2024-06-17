@@ -150,6 +150,10 @@ public class MutiChatServer {
 		}
 		
 	}
+
+	public static void main(String[] args) {
+		new MutiChatServer().serverStart();
+	}
 	
 }
 
